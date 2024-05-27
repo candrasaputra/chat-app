@@ -31,6 +31,7 @@ I spent approximately 10 hours on the assignment, divided as follows:
 - Each room is uniquely identified by a RoomID, which is a text string.
 - Usernames must be unique within a chat room and can't be reused in different rooms.
 - Validation is performed before a user can join a room.
+- User can't send message if there have network issue
 
 ## Shortcuts/Compromises made
 - The application does not include advanced error handling for edge cases to save time.
@@ -62,5 +63,7 @@ I spent approximately 10 hours on the assignment, divided as follows:
 - Load old messages in batch
 
 ## Other information about your submission that you feel it's important that we know if applicable.
+- The service will synchronize the client's state upon reconnection. For example, if a user experiences a network issue and another user sends a message, the first user will receive the message once their network is restored.
 
-## Your feedback on this technical challenge
+## Feedback on this technical challenge
+Overall, the technical challenge was well-structured and provided clear guidelines.
