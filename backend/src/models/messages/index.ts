@@ -1,0 +1,21 @@
+import { BaseModel } from '../base';
+import MessageMongoModel from './schema';
+
+const errorCodes = {
+    CREATE_DOC_ERROR: 'CREATE_MESSAGE_ERROR',
+    DOC_NOT_FOUND_ERROR: 'MESSAGE_NOT_FOUND_ERROR',
+    FIND_BY_ID_AND_UPDATE_DOC_ERROR: 'FIND_BY_ID_AND_UPDATE_MESSAGE_ERROR',
+    FIND_BY_ID_ERROR: 'FIND_MESSAGE_BY_ID_ERROR',
+    FIND_ONE_DOC_ERROR: 'FIND_ONE_MESSAGE_ERROR',
+    FIND_BY_QUERY_ERROR: 'FIND_MESSAGE_BY_QUERY_ERROR',
+    DUPLICATE_DOC_ERROR: 'DUPLICATE_MESSAGE_ERROR',
+    REMOVE_DOC_ERROR: 'REMOVE_MESSAGE_DOC_ERROR',
+    INSERT_MANY_DOC_ERROR: 'INSERT_MANY_MESSAGE_DOC_ERROR',
+    UPDATE_MANY_DOC_ERROR: 'UPDATE_MANY_MESSAGE_DOC_ERROR'
+};
+
+export class MessageModel extends BaseModel {
+    constructor() {
+        super(MessageMongoModel, errorCodes);
+    }
+}

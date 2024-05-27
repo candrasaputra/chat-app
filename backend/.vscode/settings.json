@@ -1,0 +1,11 @@
+{
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "eslint.options": {
+        "configFile": ".eslintrc.js"
+    },
+    "eslint.workingDirectories": ["."],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "typescript.tsdk": "node_modules/typescript/lib"
+}

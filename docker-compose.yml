@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: 'chat-backend'
+    ports:
+      - 8081:8081
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/chat-backend
+      - PORT=8081
+    depends_on:
+      - mongo
+    links:
+      - mongo
+
+  mongo:
+    image: mongo:4.4
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb:/data/db:rw
+
+  client:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: 'frontend'
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_BACKEND_URL=http://web:8081
+      - REACT_APP_BACKEND_SOCKET_URL=ws://web:8081
+
+volumes:
+  mongodb:
