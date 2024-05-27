@@ -14,8 +14,8 @@ services:
       - PORT=8081
     depends_on:
       - mongo
-    links:
-      - mongo
+    networks:
+      - chat-network
 
   mongo:
     image: mongo:4.4
@@ -23,6 +23,8 @@ services:
       - '27017:27017'
     volumes:
       - mongodb:/data/db:rw
+    networks:
+      - chat-network
 
   client:
     build:
@@ -33,8 +35,13 @@ services:
       - 3000:3000
     environment:
       - NODE_ENV=development
-      - REACT_APP_BACKEND_URL=http://web:8081
-      - REACT_APP_BACKEND_SOCKET_URL=ws://web:8081
+      - REACT_APP_BACKEND_URL=http://localhost:8081
+      - REACT_APP_BACKEND_SOCKET_URL=ws://localhost:8081
+    networks:
+      - chat-network
 
 volumes:
   mongodb:
+
+networks:
+  chat-network:
